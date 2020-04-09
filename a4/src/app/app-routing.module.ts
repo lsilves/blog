@@ -11,12 +11,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent }, 
+  { path: 'home', component: HomeComponent },
   { path: 'blog', component: BlogComponent },
-  { path: 'footer', component: FooterComponent },
-  { path: 'header', component: HeaderComponent },
-  { path: 'post', component: PostComponent },
-  { path: 'PageNotFound', component: PageNotFoundComponent }
+  //{ path: 'post', component: PostComponent },
+  { path: 'post/:id', component: PostComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

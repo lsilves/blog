@@ -3,6 +3,7 @@ import { Comment } from "./Comment";
 export class BlogPost{
     _id: string
     title: string;
+    author: string;
     postDate: string;
     featuredImage: string;
     post: string;
