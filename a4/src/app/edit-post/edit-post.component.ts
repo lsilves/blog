@@ -13,26 +13,29 @@ import { Router } from '@angular/router';
 })
 export class EditPostComponent implements OnInit {
   blogPost: BlogPost;
-  tags: string[];
+  tags: string;
   querySub: any;
   tagsSub: any;
   
   constructor(private route: ActivatedRoute, private data: PostService, private router: Router) { }
 
   ngOnInit(): void {
-    this.querySub = this.data.getPostbyId(this.route.snapshot.params['id']).subscribe(data => {this.blogPost = data; this.tags = data.tags;});
+    this.querySub = this.data.getPostbyId(this.route.snapshot.params['id']).subscribe(data => {this.blogPost = data; this.tags = this.blogPost.tags.toString();});
     //this.tagsSub = this.data.getTags().subscribe(data => this.tags = data);
   }
 
   formSubmit(f: NgForm): void {
-    this.blogPost.tags = this.tags;//.split(",").map(tag => tag.trim());
-    this.querySub = this.data.updatePostById(this.blogPost._id, this.blogPost).subscribe(data => {this.blogPost = data; this.tags = data.tags;     this.router.navigate(['admin']);
+    //this.tags = this.tags;//.split(",").map(tag => tag.trim());
+    this.blogPost.tags = this.tags.split(",").map(tag => tag.trim());
+    this.querySub = this.data.updatePostById(this.blogPost._id, this.blogPost).subscribe(data => {this.blogPost = data;  this.router.navigate(['admin']);
   });
   }
+
+  // this.data.getTags().subscribe(data => this.tags = data.toString()); 
   
   deletePost(){
     console.log("goodbye!");
-    this.querySub = this.data.deletePostById(this.blogPost._id).subscribe(data => {this.blogPost = data; this.tags = data.tags; this.router.navigate(['admin']); });
+    this.querySub = this.data.deletePostById(this.blogPost._id).subscribe(data => {this.blogPost = data; this.router.navigate(['admin']); });
     
   }
 

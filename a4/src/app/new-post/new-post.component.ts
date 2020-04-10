@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class NewPostComponent implements OnInit {
   blogPost: BlogPost = new BlogPost();
-  tags: string[];
+  tags: string;
   querySub: any;
   tagsSub: any;
 
@@ -22,13 +22,13 @@ export class NewPostComponent implements OnInit {
   }
 
   formSubmit(f: NgForm): void {
-    this.blogPost.tags = this.tags;//.split(",").map(tag => tag.trim());
     this.getFieldsReady(); 
-    this.querySub = this.data.newPost(this.blogPost).subscribe(data => {this.blogPost = data; this.tags = data.tags; });
+    this.querySub = this.data.newPost(this.blogPost).subscribe(data => {this.blogPost = data; });
     this.router.navigate(['admin']);
   }
   
   getFieldsReady(){
+    this.blogPost.tags = this.tags.split(",").map(tag => tag.trim());
     this.blogPost.isPrivate = false;
     this.blogPost.postDate = new Date().toLocaleDateString();
     this.blogPost.postedBy = "WEB422 Student";
