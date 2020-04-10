@@ -34,5 +34,21 @@ export class PostService {
     return this.http.get<string[]>('https://shrouded-bayou-23990.herokuapp.com/api/tags');
   }
 
+  getAllPosts():Observable<BlogPost[]> {
+    return this.http.get<BlogPost[]>('https://shrouded-bayou-23990.herokuapp.com/api/posts?page=1&perPage=' + Number.MAX_SAFE_INTEGER);
+  }
+
+  newPost(data: BlogPost): Observable<any>{
+    return this.http.post<any>(`https://shrouded-bayou-23990.herokuapp.com/api/posts`, data);
+  }
+
+  updatePostById(id: string, data: BlogPost): Observable<any>{
+    return this.http.put<any>(`https://shrouded-bayou-23990.herokuapp.com/api/posts/${id}`, data);
+  }
+
+  deletePostById(id: string): Observable<any>{
+    return this.http.delete<any>(`https://shrouded-bayou-23990.herokuapp.com/api/posts/${id}`);
+  }
+
   constructor(private http: HttpClient) { }
 }

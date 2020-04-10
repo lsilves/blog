@@ -54,11 +54,11 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
           </div>
         </div> -->
-        <div class="comment" *ngFor="let comment of comments">
+        <div class="comment" *ngFor="let comment of post.comments">
           <div class="comment-header d-flex justify-content-between">
             <div class="user d-flex align-items-center">
               <div class="image"><img src="/assets/img/user.svg" alt="..." class="img-fluid rounded-circle"></div>
-              <div class="title"><strong>{{author}}</strong><span class="date">{{date | date:'mediumDate'}}</span></div>
+              <div class="title"><strong>{{comment.author}}</strong><span class="date">{{comment.date | date:'mediumDate'}}</span></div>
             </div>
           </div>
           <div class="comment-body" [innerHtml]=comment.comment>
@@ -69,13 +69,13 @@
         <header>
           <h3 class="h6">Leave a reply</h3>
         </header>
-        <form action="#" class="commenting-form">
+        <form class="commenting-form" (ngSubmit)="submitComment()">
           <div class="row"> 
             <div class="form-group col-md-12">
-              <input type="text" name="username" id="username" placeholder="Name" class="form-control">
+              <input type="text" name="username" id="username" placeholder="Name" class="form-control" [(ngModel)]="commentName">
             </div>
             <div class="form-group col-md-12">
-              <textarea name="usercomment" id="usercomment" placeholder="Type your comment" class="form-control"></textarea>
+              <textarea name="usercomment" id="usercomment" placeholder="Type your comment" class="form-control" [(ngModel)]="commentText"></textarea>
             </div>
             <div class="form-group col-md-12">
               <button type="submit" class="btn btn-secondary">Submit Comment</button>
