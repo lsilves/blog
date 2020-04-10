@@ -37,9 +37,11 @@ export class PostDataComponent implements OnInit {
   ngOnInit(): void {
     //console.log("THIS IS THE AMOUNT OF VIEWS: ", this.post.views);
 
-    this.querySub = this.data.getPostbyId(this.route.snapshot.params['id']).subscribe(data => {this.post = data; this.post.views = this.post.views + 1;});
+    this.querySub = this.data.getPostbyId(this.route.snapshot.params['id']).subscribe(data => {this.post = data; this.post.views = this.post.views + 1; this.data.updatePostById(this.post._id, this.post).subscribe();});
     //this.post.views = this.post.views + 1;
-    this.data.updatePostById(this.post._id, this.post).subscribe(); 
+   // this.data.updatePostById(this.post._id, this.post).subscribe(); 
+   // this.querySub = this.data.getPostbyId(this.route.snapshot.params['id']).subscribe(data => {this.post = data;});
+
     //console.log("THIS IS THE AMOUNT OF VIEWS: ", this.post.views);
   } 
 

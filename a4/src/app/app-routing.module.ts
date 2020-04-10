@@ -18,9 +18,9 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   //{ path: 'post', component: PostComponent },
   { path: 'post/:id', component: PostComponent },
-  { path: 'post-table', component: PostTableComponent }, 
-  { path: 'edit-post/:id', component: EditPostComponent },
-  { path: 'new-post', component:NewPostComponent },
+  { path: 'admin', component: PostTableComponent }, 
+  { path: 'admin/post/:id', component: EditPostComponent },
+  { path: 'admin/newPost', component:NewPostComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
