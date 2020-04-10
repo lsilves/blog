@@ -23,7 +23,7 @@
           "skipTests": true
         },
         "@schematics/angular:module": {
-          "skipTests": git true
+          "skipTests": true
         },
         "@schematics/angular:pipe": {
           "skipTests": true
