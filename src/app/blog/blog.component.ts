@@ -33,7 +33,6 @@ export class BlogComponent implements OnInit {
   ngOnInit(): void {
     
     this.querySub = this.route.queryParams.subscribe(params => {
-      console.log("params -> ", params);
       if(params['tag']){
         this.tag = params['tag'];
         this.category = null;
@@ -53,7 +52,7 @@ export class BlogComponent implements OnInit {
 
 
 
-getPage(num){console.log("GETPAGE");
+getPage(num){
   this.data.getPosts(num, this.tag, this.category).subscribe(data =>{
     if(data.length > 0){
       this.blogPosts = data;

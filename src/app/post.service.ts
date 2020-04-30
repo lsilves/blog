@@ -14,10 +14,8 @@ export class PostService {
 
   getPosts(page, tag, category): Observable<BlogPost[]> { // any?
     myVal = 'https://shrouded-bayou-23990.herokuapp.com/api/posts?page=' + page + '&perPage=' + perPage + ((tag == null || tag == undefined) ? "" : "&tag=" + tag) + ((category == null || category == undefined) ? "" : "&category=" + category);
-    console.log("Hello, i am being called. ", myVal);
     
     myData = this.http.get<BlogPost[]>('https://shrouded-bayou-23990.herokuapp.com/api/posts?page=' + page + '&perPage=' + perPage + ((tag == null || tag == undefined) ? "" : "&tag=" + tag) + ((category == null || category == undefined) ? "" : "&category=" + category));
-    console.log("MYDATA from GETPOSTS(): ", myData);
     return myData;
   }
 
