@@ -41,7 +41,7 @@ export class PostTableComponent implements OnInit {
 
 
 
-getAllMyPosts(){console.log("GET ALL MY POSTS");
+getAllMyPosts(){
   this.data.getAllPosts().subscribe(data =>{
     if(data.length > 0){
       this.blogPosts = data;
@@ -49,7 +49,6 @@ getAllMyPosts(){console.log("GET ALL MY POSTS");
   });
 }
 rowClicked(e, id){
-  console.log("clicked rowClicked()");
   this.route.navigate(['admin/post', id]);
 }
 

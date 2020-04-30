@@ -23,12 +23,12 @@ export class PostComponent implements OnInit {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => { return false; }
   
-    console.log("post click ngoninit");
+    
     this.postSub = this.data.getPostbyId(this.route.snapshot.params['id']).subscribe(data => this.blogPost = data);
   }
 
   ngOnDestroy(){
-    console.log("blogPost data from POST -> ", this.blogPost);
+    
     this.postSub.unsubscribe();
   }
 

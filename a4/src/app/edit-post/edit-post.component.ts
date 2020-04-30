@@ -34,7 +34,6 @@ export class EditPostComponent implements OnInit {
   // this.data.getTags().subscribe(data => this.tags = data.toString()); 
   
   deletePost(){
-    console.log("goodbye!");
     this.querySub = this.data.deletePostById(this.blogPost._id).subscribe(data => {this.blogPost = data; this.router.navigate(['admin']); });
     
   }

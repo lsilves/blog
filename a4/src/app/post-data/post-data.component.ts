@@ -55,7 +55,6 @@ export class PostDataComponent implements OnInit {
     // this.querySub = this.data.newPost(this.blogPost).subscribe(data => {this.blogPost = data; this.tags = data.tags; });
     // this.router.navigate(['admin']);
     let myComment = [{ author: this.commentName, comment: this.commentText, date: new Date().toLocaleDateString()}];
-console.log("test - comments.type:", myComment);
     this.post.comments.push({ author: this.commentName, comment: this.commentText, date: new Date().toLocaleDateString()});
     this.commentSub = this.data.updatePostById(this.post._id, this.post).subscribe(data => { this.post = data; });
     //this.post.comments.push
